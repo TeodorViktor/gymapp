@@ -7,11 +7,11 @@ import auth
 def main():
     # Initialize the database (create tables if they don't exist)
     init_db()
-    auth.register_agent("T", "1")
+    #auth.register_agent("T", "1")
     # Create the main application window
     root = ctk.CTk()
     root.title("Gym Management System")
-    root.geometry("500x300+400+100")  # Adjust window size as needed
+    root.geometry("500x300+700+300")  # Adjust window size as needed
 
     container = ctk.CTkFrame(root)
     container.pack(fill="both", expand=True)

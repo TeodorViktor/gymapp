@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from datetime import datetime, timedelta
 import sqlite3
-
+from tkinter import messagebox
 
 class AddMemeber(ctk.CTkFrame):
     def __init__(self, master):
@@ -19,7 +19,8 @@ class AddMemeber(ctk.CTkFrame):
 
         self.confirm_membership = ctk.CTkButton(self, text="Confirm Membership", command=self.confirm_membership)
         self.confirm_membership.pack(pady=20)
-
+        self.success_label = ctk.CTkLabel(self, text="", text_color="green", height=0)  # Initially empty
+        self.success_label.pack(pady=0)
         self.back_todashboard = ctk.CTkButton(self, text="Back to Dashboard", command=self.back_to_dashboard)
         self.back_todashboard.pack(pady=20)
 
@@ -36,6 +37,8 @@ class AddMemeber(ctk.CTkFrame):
                     (self.member_name.get(), age, expiry_date))
         con.commit()
         con.close()
+        self.success_label.configure(height=5, pady=10)
+        self.success_label.configure(text="✅ Member registered successfully!", text_color="green")
 
     def back_to_dashboard(self):
         from ui.dashboard import Dashboard  # ✅ Corrected Import
